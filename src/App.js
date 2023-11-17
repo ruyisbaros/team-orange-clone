@@ -1,11 +1,18 @@
 import React from "react";
 import Navbar from "./components/Navbar";
+import Banner from "./components/Banner";
+import Communication from "./components/Communication";
+import Reference from "./components/Reference";
 
 const App = () => {
   return (
-    <div className="w-full h-full bg-bodyColor text-lightText">
+    <div className="w-full h-full bg-bodyColor text-lightText scrollBar">
       <Navbar />
-      <div className="max-w-screen-2xl mx-auto"></div>
+      <Banner />
+      <div className="w-full">
+        <Communication />
+        <Reference />
+      </div>
     </div>
   );
 };

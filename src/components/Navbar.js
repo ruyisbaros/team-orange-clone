@@ -8,7 +8,7 @@ import logo from "../assets/teamorange-logo.png";
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
   return (
-    <div className="w-full h-[79px] mb-2 sticky top-0 bg-[#fff] z-[100] mx-auto flex justify-center items-center border-b-[1px] font-titleFont border-b-gray-400 px-10 gap-[10rem]">
+    <div className="w-full h-[79px] sticky top-0 bg-[#fff] z-[100] mx-auto flex justify-center items-center border-b-[1px] font-titleFont border-b-gray-400 px-10 gap-[10rem]">
       <div className="flex items-center gap-[40px] md:gap-[30px] mdl:gap-[20px] lg:gap-[10px]">
         <img src={logo} alt="" />
       </div>

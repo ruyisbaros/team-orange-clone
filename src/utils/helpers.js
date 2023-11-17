@@ -42,20 +42,26 @@ export const navLinksData = [
 export const banners = [
   {
     id: 2001,
+    mainTitle:
+      "TEST WEB- UND WERBEAGENTUR FÜR ERKLÄRUNGSBEDÜRFTIGE PRODUKTE UND DIENSTLEISTUNGEN",
     title1: "wir sind in",
     title2: "stuttgart esslingen",
     img: ban1,
   },
   {
-    id: 2001,
+    id: 2002,
+    mainTitle:
+      "TEST WEB- UND WERBEAGENTUR FÜR ERKLÄRUNGSBEDÜRFTIGE PRODUKTE UND DIENSTLEISTUNGEN",
     title1: "wir lieben",
     title2: "b2b Industrie",
     img: ban2,
   },
   {
-    id: 2001,
+    id: 2003,
+    mainTitle:
+      "TEST WEB- UND WERBEAGENTUR FÜR ERKLÄRUNGSBEDÜRFTIGE PRODUKTE UND DIENSTLEISTUNGEN",
     title1: "wir sind",
-    team2: "team:orange",
+    title2: "team:orange",
     img: ban3,
   },
 ];
