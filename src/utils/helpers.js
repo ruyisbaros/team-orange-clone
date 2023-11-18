@@ -13,6 +13,18 @@ import r9 from "./../assets/r9.jpg";
 import r10 from "./../assets/r10.jpg";
 import r11 from "./../assets/r11.jpg";
 import r12 from "./../assets/r12.jpg";
+
+import c1 from "./../assets/c1.png";
+import c2 from "./../assets/c2.png";
+import c3 from "./../assets/c3.png";
+import c4 from "./../assets/c4.png";
+import c5 from "./../assets/c5.png";
+import c6 from "./../assets/c6.png";
+import c7 from "./../assets/c7.png";
+import c8 from "./../assets/c8.png";
+import c10 from "./../assets/c10.png";
+import c9 from "./../assets/c9.png";
+import c11 from "./../assets/c11.png";
 export const navLinksData = [
   {
     _id: 1001,
@@ -57,7 +69,7 @@ export const banners = [
     mainTitle:
       "TEST WEB- UND WERBEAGENTUR FÜR ERKLÄRUNGSBEDÜRFTIGE PRODUKTE UND DIENSTLEISTUNGEN",
     title1: "wir sind in",
-    title2: "stuttgart esslingen",
+    title2: "stuttgart / esslingen",
     img: ban1,
   },
   {
@@ -65,7 +77,7 @@ export const banners = [
     mainTitle:
       "TEST WEB- UND WERBEAGENTUR FÜR ERKLÄRUNGSBEDÜRFTIGE PRODUKTE UND DIENSTLEISTUNGEN",
     title1: "wir lieben",
-    title2: "b2b Industrie",
+    title2: "b2b und Industrie",
     img: ban2,
   },
   {
@@ -126,5 +138,52 @@ export const references = [
   {
     id: 312,
     img: r12,
+  },
+];
+
+export const customers = [
+  {
+    id: 301,
+    img: c1,
+  },
+  {
+    id: 302,
+    img: c2,
+  },
+  {
+    id: 303,
+    img: c3,
+  },
+  {
+    id: 304,
+    img: c4,
+  },
+  {
+    id: 305,
+    img: c5,
+  },
+  {
+    id: 306,
+    img: c6,
+  },
+  {
+    id: 307,
+    img: c7,
+  },
+  {
+    id: 308,
+    img: c8,
+  },
+  {
+    id: 309,
+    img: c9,
+  },
+  {
+    id: 310,
+    img: c10,
+  },
+  {
+    id: 311,
+    img: c11,
   },
 ];

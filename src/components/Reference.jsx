@@ -5,7 +5,7 @@ import SingleReference from "./SingleReference";
 
 const Reference = () => {
   return (
-    <section id="referenzen" className="w-full min-h-screen">
+    <section id="referenzen" className="w-full min-h-screen overflow-hidden">
       <div
         className="w-full h-[600px] flex items-center justify-center"
         style={{
@@ -71,11 +71,11 @@ const Reference = () => {
           </div>
         </div>
       </div>
-      <div className="w-[1170px] mx-auto flex flex-wrap mt-[5rem] mb-[5rem] gap-[2rem]">
+      <div className="w-[1170px] mx-auto flex flex-wrap mt-[5rem] gap-[2rem]">
         {references.map((ref) => (
           <SingleReference key={ref.id} img={ref.img} />
         ))}
-        <div className="w-full mt-[3rem] flex justify-center items-center">
+        <div className="w-full mt-[3rem] flex justify-center items-center mb-6">
           <p className="font-bold text-designColor text-[20px] cursor-pointer">
             ...mehr Referenzen
           </p>

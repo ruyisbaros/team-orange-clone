@@ -117,3 +117,16 @@ button {
   height: 100% !important;
   object-fit: cover;
 }
+
+.kundenAnim {
+  animation: kaydir 0.8s infinite;
+}
+
+@keyframes kaydir {
+  0% {
+    transform: translateX(0);
+  }
+  0% {
+    transform: translate3d(-300px, 0, 0);
+  }
+}

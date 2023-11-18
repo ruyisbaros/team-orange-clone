@@ -43,16 +43,16 @@ const Banner = () => {
             </div>
             <div>
               <motion.h1
-                className="text-white font-bold text-[70px] w-full text-center uppercase opacity-[.08] titleAnim"
+                className="text-white font-bold text-[70px] w-full text-center uppercase  titleAnim"
                 initial={{ opacity: 0 }}
                 animate={{
-                  opacity: 0.08,
+                  opacity: 1,
                   transition: { duration: 0.5 },
                 }}
               >
                 {banners[activeIndex].title1}
               </motion.h1>
-              <h1 className="text-designColor font-bold text-[70px] w-full text-center uppercase -mt-[35px] opacity-[.08] titleAnim">
+              <h1 className="text-designColor font-bold text-[70px] w-full text-center uppercase -mt-[35px]  titleAnim">
                 {banners[activeIndex].title2}
               </h1>
             </div>
