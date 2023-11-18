@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const Banner = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [trans, setTrans] = useState(false);
+  //const [trans, setTrans] = useState(false);
 
   useEffect(() => {
     let timer = setInterval(() => {
