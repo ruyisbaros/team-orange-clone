@@ -7,7 +7,7 @@ const Customers = () => {
   return (
     <section
       id="kunden"
-      className="w-full min-h-screen pb-[2rem] overflow-x-auto"
+      className="w-full min-h-screen pb-[2rem] overflow-hidden"
     >
       <div className="w-[6060px] h-[150px] bg-designColor flex items-center flex-nowrap overflow-hidden">
         {customers.map((cst) => (

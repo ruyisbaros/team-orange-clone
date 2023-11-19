@@ -36,15 +36,19 @@ const Banner = () => {
   return (
     <div
       data-image={banners[activeIndex].img}
-      className="w-full h-screen banCover overflow-hidden relative"
+      className="w-full h-screen banCover overflow-hidden"
+      style={{
+        backgroundImage: `url(${banners[activeIndex].img})`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundBlendMode: "lighten",
+      }}
     >
-      <div>
-        <img src={banners[activeIndex].img} alt="" className="w-full -h-full" />
-      </div>
       {banners.map((banner) => (
         <div
           key={banner.id}
-          className="w-full h-full flex items-center justify-center banContext overflow-hidden"
+          className="w-full h-full flex items-center justify-center"
         >
           <div className="w-[45%] h-1/2 flex flex-col items-center justify-center ">
             <div className="w-full flex flex-col items-center border-b-[1px] border-b-[#ddd] border-opacity-50">

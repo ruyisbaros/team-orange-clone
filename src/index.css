@@ -10,6 +10,7 @@
 }
 body {
   font-family: "Roboto Condensed", sans-serif;
+  width: 100vw;
 }
 .active {
   color: white;
@@ -58,9 +59,7 @@ button {
   border: 1px solid rgba(255, 255, 255, 0.3);
   padding: 9px 15px;
 }
-.banCover {
-  background: rgba(0, 0, 0, 0.5);
-}
+
 .titleAnim {
   transition: all 0.3s;
   animation: show 0.3s;
@@ -69,9 +68,11 @@ button {
 @keyframes show {
   0% {
     opacity: 0;
+    scale: 0;
   }
   100% {
     opacity: 0.08;
+    scale: 1;
   }
 }
 .gear {
@@ -129,4 +130,19 @@ button {
   0% {
     transform: translate3d(-300px, 0, 0);
   }
+}
+.banner-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+.banCover {
+  background: rgba(0, 0, 0, 0.5);
+  overflow: hidden !important;
+}
+.banContext {
+  position: absolute;
+  top: 0;
+  left: 0;
 }

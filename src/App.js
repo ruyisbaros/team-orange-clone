@@ -7,7 +7,7 @@ import Customers from "./components/Customers";
 
 const App = () => {
   return (
-    <div className="w-full h-full bg-bodyColor text-lightText scrollBar">
+    <div className="max-w-full h-full bg-bodyColor text-lightText scrollBar">
       <Navbar />
       <Banner />
       <div className="w-full">

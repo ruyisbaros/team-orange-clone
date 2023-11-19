@@ -1,0 +1,15 @@
+style={{
+            backgroundImage: `url(${banners[activeIndex].img})`,
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundBlendMode: "lighten",
+          }}
+
+<div className="w-full h-full banner-image">
+            <img
+              src={banners[activeIndex].img}
+              alt=""
+              className="w-full h-full object-cover"
+            />
+          </div>

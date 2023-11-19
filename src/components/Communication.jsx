@@ -367,7 +367,7 @@ const Communication = () => {
           </div>
         </div>
       </div>
-      <div className="w-full h-[340px] flex items-center justify-center">
+      <div className="w-full h-[340px] flex items-center justify-center overflow-hidden">
         <img src={process} alt="" className="process" />
       </div>
       <div className="w-full h-[182px] flex items-center justify-center">
