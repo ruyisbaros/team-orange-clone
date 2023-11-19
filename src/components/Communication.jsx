@@ -1,9 +1,162 @@
-import React from "react";
+import React, { useEffect, useLayoutEffect, useRef } from "react";
 import { FaPlusCircle } from "react-icons/fa";
 import gear from "./../assets/pa_1-removebg-preview.png";
 import fleisch from "./../assets/fleischwolf.png";
 import process from "./../assets/prozess.png";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 const Communication = () => {
+  const comRef = useRef(null);
+  gsap.registerPlugin(ScrollTrigger);
+
+  useLayoutEffect(() => {
+    /* const tl1 = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".comL1",
+        markers: true,
+      },
+    }); */
+    gsap.fromTo(
+      ".comL1",
+      {
+        x: -100,
+        opacity: 0.2,
+      },
+      {
+        x: 0,
+        opacity: 1,
+        duration: 1,
+        scrollTrigger: {
+          trigger: ".comL1",
+          //scrub: true,
+        },
+      }
+    );
+
+    gsap.fromTo(
+      ".comR1",
+      {
+        x: 100,
+        opacity: 0.2,
+      },
+      {
+        x: 0,
+        duration: 1,
+        opacity: 1,
+        scrollTrigger: {
+          trigger: ".comR1",
+          //scrub: true,
+        },
+      }
+    );
+    gsap.fromTo(
+      ".comL2",
+      {
+        x: -100,
+        opacity: 0.2,
+      },
+      {
+        x: 0,
+        opacity: 1,
+        duration: 1,
+        delay: 1,
+        scrollTrigger: {
+          trigger: ".comL2",
+          //scrub: true,
+        },
+      }
+    );
+
+    gsap.fromTo(
+      ".comR2",
+      {
+        x: 100,
+        opacity: 0.2,
+      },
+      {
+        x: 0,
+        opacity: 1,
+        duration: 1,
+        delay: 1,
+        scrollTrigger: {
+          trigger: ".comR2",
+          //scrub: true,
+        },
+      }
+    );
+    gsap.fromTo(
+      ".comL3",
+      {
+        x: -100,
+        opacity: 0.2,
+      },
+      {
+        x: 0,
+        opacity: 1,
+        duration: 1,
+        delay: 2,
+        scrollTrigger: {
+          trigger: ".comL2",
+          //scrub: true,
+        },
+      }
+    );
+
+    gsap.fromTo(
+      ".comR3",
+      {
+        x: 100,
+        opacity: 0.2,
+      },
+      {
+        x: 0,
+        opacity: 1,
+        duration: 1,
+        delay: 2,
+        scrollTrigger: {
+          trigger: ".comR2",
+          //scrub: true,
+        },
+      }
+    );
+  }, []);
+
+  /*  right: 10rem;
+  top: -43px;
+  width: 26%; */
+  useLayoutEffect(() => {
+    gsap.fromTo(
+      ".fleisch",
+      { x: -700, opacity: 0.1, scale: 0.5 },
+      {
+        x: 0,
+        opacity: 1,
+        scale: 1,
+        duration: 2,
+        scrollTrigger: {
+          trigger: ".fleisch",
+          scrub: true,
+        },
+      }
+    );
+  }, []);
+
+  useLayoutEffect(() => {
+    gsap.fromTo(
+      ".process",
+      { x: 700, opacity: 0.1 },
+      {
+        x: 0,
+        opacity: 1,
+        duration: 2,
+        scrollTrigger: {
+          trigger: ".process",
+          scrub: true,
+        },
+      }
+    );
+  }, []);
   return (
     <section
       id="kommunikation"
@@ -38,10 +191,13 @@ const Communication = () => {
             </div>
           </div>
         </div>
-        <div className="w-full h-[500px] flex items-center gap-[1.5rem]">
+        <div
+          className="w-full h-[500px] flex items-center gap-[1.5rem]"
+          ref={comRef}
+        >
           <div className="left">
             <ul>
-              <li className="w-full h-[140px] flex gap-[1rem]">
+              <li className="comL1 w-full h-[140px] flex gap-[1rem]">
                 <div className="w-[97px] h-[87px]  flex items-center justify-center">
                   <div className="bg-designColor w-[72px] h-[72px] rounded-full flex items-center justify-center">
                     <span className="text-white text-[25px]">
@@ -64,7 +220,7 @@ const Communication = () => {
                   </p>
                 </div>
               </li>
-              <li className="w-full h-[140px] flex gap-[1rem]">
+              <li className="comL2 w-full h-[140px] flex gap-[1rem]">
                 <div className="w-[97px] h-[87px]  flex items-center justify-center">
                   <div className="bg-designColor w-[72px] h-[72px] rounded-full flex items-center justify-center">
                     <span className="text-white text-[25px]">
@@ -87,7 +243,7 @@ const Communication = () => {
                   </p>
                 </div>
               </li>
-              <li className="w-full h-[140px] flex gap-[1rem]">
+              <li className="comL3 w-full h-[140px] flex gap-[1rem]">
                 <div className="w-[97px] h-[87px]  flex items-center justify-center">
                   <div className="bg-designColor w-[72px] h-[72px] rounded-full flex items-center justify-center">
                     <span className="text-white text-[25px]">
@@ -114,7 +270,7 @@ const Communication = () => {
           </div>
           <div className="right">
             <ul>
-              <li className="w-full h-[140px] flex gap-[1rem]">
+              <li className="comR1 w-full h-[140px] flex gap-[1rem]">
                 <div className="w-[97px] h-[87px]  flex items-center justify-center">
                   <div className="bg-designColor w-[72px] h-[72px] rounded-full flex items-center justify-center">
                     <img src={gear} alt="" className="gear" />
@@ -135,7 +291,7 @@ const Communication = () => {
                   </p>
                 </div>
               </li>
-              <li className="w-full h-[140px] flex gap-[1rem]">
+              <li className="comR2 w-full h-[140px] flex gap-[1rem]">
                 <div className="w-[97px] h-[87px]  flex items-center justify-center">
                   <div className="bg-designColor w-[72px] h-[72px] rounded-full flex items-center justify-center">
                     <span className="text-white text-[25px]">
@@ -157,7 +313,7 @@ const Communication = () => {
                   </p>
                 </div>
               </li>
-              <li className="w-full h-[140px] flex gap-[1rem]">
+              <li className="comR3 w-full h-[140px] flex gap-[1rem]">
                 <div className="w-[97px] h-[87px]  flex items-center justify-center">
                   <div className="bg-designColor w-[72px] h-[72px] rounded-full flex items-center justify-center">
                     <FaPlusCircle size={25} color="#fff" />
@@ -188,7 +344,11 @@ const Communication = () => {
             PERSÖNLICH KENNENLERNEN
           </h1>
         </div>
-        <img src={fleisch} alt="" className="bg-transparent imgFleisch" />
+        <img
+          src={fleisch}
+          alt=""
+          className="fleisch bg-transparent imgFleisch"
+        />
       </div>
       <div className="w-full h-[180px]">
         <div className="w-[30%] mx-auto ">
@@ -208,7 +368,7 @@ const Communication = () => {
         </div>
       </div>
       <div className="w-full h-[340px] flex items-center justify-center">
-        <img src={process} alt="" />
+        <img src={process} alt="" className="process" />
       </div>
       <div className="w-full h-[182px] flex items-center justify-center">
         <p className="w-[40%] text-[14px] text-[#4f4d43]">
