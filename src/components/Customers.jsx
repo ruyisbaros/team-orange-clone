@@ -1,9 +1,28 @@
-import React from "react";
+import React, { useLayoutEffect } from "react";
 import { customers } from "../utils/helpers";
 import Tlikes from "./../assets/2kikes.jpg";
 import indutrie from "./../assets/industrie-dienstleistung-handel.jpg";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const Customers = () => {
+  gsap.registerPlugin(ScrollTrigger);
+
+  useLayoutEffect(() => {
+    gsap.fromTo(
+      ".kunden-img",
+      { opacity: 0.1, scale: 0.5 },
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 4,
+        scrollTrigger: {
+          trigger: ".kunden-img",
+          scrub: true,
+        },
+      }
+    );
+  }, []);
   return (
     <section
       id="kunden"
@@ -80,7 +99,7 @@ const Customers = () => {
           </div>
         </div>
         <div className="w-full h-[340px] flex items-center justify-center mt-[200px]">
-          <img src={indutrie} alt="" />
+          <img src={indutrie} alt="" className="kunden-img" />
         </div>
         <div className="w-full h-[300px]  flex items-center justify-center mt-[10rem]">
           <div className=" ">

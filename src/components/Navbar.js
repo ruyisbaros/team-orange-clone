@@ -9,7 +9,7 @@ const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
   return (
     <div className="w-full h-[79px] sticky top-0 bg-[#fff] z-[100] mx-auto flex justify-center items-center border-b-[1px] font-titleFont border-b-gray-400 px-10 gap-[10rem]">
-      <div className="flex items-center gap-[40px] md:gap-[30px] mdl:gap-[20px] lg:gap-[10px]">
+      <div className="w-[120px] h-[25px] lgl:w-[140px] lgl:h-[30px] xxl:w-[160px] xxl:h-[37px] flex items-center gap-[40px] md:gap-[30px] mdl:gap-[20px] lg:gap-[10px]">
         <img src={logo} alt="" />
       </div>
       <div>
@@ -17,7 +17,7 @@ const Navbar = () => {
           {navLinksData.map(({ _id, title, link }, i) => (
             <li
               key={_id}
-              className="text-base text-gray-500 cursor-pointer hover:text-designColor duration-300 uppercase font-medium"
+              className="text-[10px] lgl:text-[12px] xxl:text-base text-gray-500 cursor-pointer hover:text-designColor duration-300 uppercase font-medium"
             >
               <Link
                 activeClass="active"

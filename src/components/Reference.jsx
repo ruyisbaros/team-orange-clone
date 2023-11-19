@@ -1,12 +1,69 @@
-import React, { useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Tlikes from "./../assets/2kikes.jpg";
 import { references } from "../utils/helpers";
 import SingleReference from "./SingleReference";
 import CounterUp from "react-countup";
 import Trigger from "react-scroll-trigger";
+import { motion, stagger } from "framer-motion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+const positions = [
+  { top: "0", left: "0" },
+  { top: "-230px", left: "396px" },
+  { top: "-470px", left: "790px" },
+  { top: "-435px", left: "0" },
+  { top: "-670px", left: "396px" },
+  { top: "-905px", left: "790px" },
+  { top: "-870px", left: "0" },
+  { top: "-1100px", left: "396px" },
+  { top: "-1335px", left: "790px" },
+  { top: "-1305px", left: "0" },
+  { top: "-1535px", left: "396px" },
+  { top: "-1770px", left: "790px" },
+];
 
 const Reference = () => {
+  const refBox = useRef(null);
+  gsap.registerPlugin(ScrollTrigger);
   const [startCounter, setStartCounter] = useState(false);
+  const [isCompleted, setIsCompleted] = useState(false);
+  const [isNowInView, setIsNowInView] = useState();
+
+  let entry;
+  useEffect(() => {
+    const observer = new IntersectionObserver((ents) => {
+      entry = ents[0];
+      console.log(entry);
+      setIsNowInView(entry.isIntersecting);
+      setIsCompleted(false);
+    });
+    observer.observe(refBox.current);
+  }, [entry]);
+  console.log(isNowInView);
+  const imgs = document.querySelectorAll(".anim-img");
+
+  gsap.set(".anim-img", {
+    top: "45%",
+    left: "50%",
+    transform: "translate(-50%, -50%) scale(0)",
+  });
+  gsap.to(".anim-img", {
+    scale: 1,
+    width: "360px",
+    height: "235px",
+    stagger: 0.2,
+    duration: 0.85,
+    ease: "power2.out",
+    delay: 1,
+    onComplete: handleShrink,
+  });
+  function handleShrink() {
+    setTimeout(() => {
+      setIsCompleted(true);
+    }, 2500);
+  }
+
   return (
     <Trigger
       onEnter={() => setStartCounter(true)}
@@ -14,7 +71,7 @@ const Reference = () => {
     >
       <section id="referenzen" className="w-full min-h-screen overflow-hidden">
         <div
-          className="w-full h-[600px] flex items-center justify-center"
+          className={`w-full h-[600px] transition-all duration-300 flex items-center justify-center`}
           style={{
             backgroundImage: `url(${Tlikes})`,
             backgroundRepeat: "no-repeat",
@@ -119,15 +176,26 @@ const Reference = () => {
             </div>
           </div>
         </div>
-        <div className="w-[1170px] mx-auto flex flex-wrap mt-[5rem] gap-[2rem]">
-          {references.map((ref) => (
-            <SingleReference key={ref.id} img={ref.img} />
+        <div
+          className={`w-[1170px] mx-auto relative ${
+            isCompleted ? "img-anim-case" : ""
+          }`}
+          ref={refBox}
+        >
+          {references.map((ref, i) => (
+            <SingleReference
+              key={ref.id}
+              img={ref.img}
+              i={i}
+              isNowInView={isNowInView}
+              isCompleted={isCompleted}
+            />
           ))}
-          <div className="w-full mt-[3rem] flex justify-center items-center mb-6">
-            <p className="font-bold text-designColor text-[20px] cursor-pointer">
-              ...mehr Referenzen
-            </p>
-          </div>
+        </div>
+        <div className="w-full mt-[4rem] mb-[3rem] flex justify-center items-center">
+          <p className="font-bold text-designColor text-[20px] cursor-pointer">
+            ...mehr Referenzen
+          </p>
         </div>
       </section>
     </Trigger>

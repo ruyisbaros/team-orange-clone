@@ -12,6 +12,7 @@ module.exports = {
         lg: "960px",
         lgl: "1024px",
         xl: "1280px",
+        xxl: "1400px",
       },
       fontFamily: {
         bodyFont: ["Poppins", "sans-serif"],
