@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { banners } from "../utils/helpers";
-import { motion } from "framer-motion";
 
 const Banner = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  //const [trans, setTrans] = useState(false);
+  //const [isCompleted, setIsCompleted] = useState(true);
 
   const BannerTitle = () => {
     return (

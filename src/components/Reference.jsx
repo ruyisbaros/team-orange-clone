@@ -40,7 +40,7 @@ const Reference = () => {
           <motion.div className="w-[70%] h-[70%] ">
             <motion.div
               className="flex flex-col items-center justify-center opacity-[.8]"
-              style={{ y: yBg }}
+              style={{ y: yBg, fontSize: "12px" }}
             >
               <div className="w-[30%] pb-2 mb-2 text-center text-[#333] text-[16px] font-[500] tracking-tight border-b-[1px] border-b-[#333]">
                 PRESENTAT:ON

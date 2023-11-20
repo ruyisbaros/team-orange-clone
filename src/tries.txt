@@ -64,3 +64,61 @@ gsap.set(".anim-img", {
             />
           ))}
         </div>
+
+
+####banner
+
+ gsap.set(".banner-img", {
+    transform: "scale(0)",
+    zIndex: "100",
+  });
+  gsap.to(".banner-img", {
+    scale: 1,
+    width: "50%",
+    height: "50%",
+    stagger: 0.075,
+    duration: 2,
+    ease: "power2.out",
+    delay: 0.4,
+    onComplete: handleShrink,
+  });
+  function handleShrink() {
+    gsap.to(".banner-animation", {
+      transform: "scale(0)",
+      zIndex: "0",
+    });
+  }
+ <div className="w-full h-full bg-black/50 flex items-center justify-center banner-animation">
+        <div className="img-banner-content">
+          <div className="banner-img">
+            <img src={img1} alt="" />
+          </div>
+          <div className="banner-img">
+            <img src={img2} alt="" />
+          </div>
+          <div className="banner-img">
+            <img src={img3} alt="" />
+          </div>
+          <div className="banner-img">
+            <img src={img4} alt="" />
+          </div>
+          <div className="banner-img">
+            <img src={img5} alt="" />
+          </div>
+          <div className="banner-img">
+            <img src={img6} alt="" />
+          </div>
+          <div className="banner-img">
+            <img src={img7} alt="" />
+          </div>
+          <div className="banner-img">
+            <img src={img8} alt="" />
+          </div>
+          <div className="banner-img">
+            <img src={img9} alt="" />
+          </div>
+          <div className="banner-img">
+            <img src={img10} alt="" />
+          </div>
+        </div>
+      </div>

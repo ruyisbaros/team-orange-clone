@@ -1,11 +1,23 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { customers } from "../utils/helpers";
-//import Tlikes from "./../assets/2kikes.jpg";
 import indutrie from "./../assets/industrie-dienstleistung-handel.jpg";
 import par from "./../assets/prlx.png";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { EffectCoverflow, Pagination, Navigation } from "swiper";
+import c1 from "./../assets/c1.png";
+import c2 from "./../assets/c2.png";
+import c3 from "./../assets/c3.png";
+import c4 from "./../assets/c4.png";
+import c5 from "./../assets/c5.png";
+import c6 from "./../assets/c6.png";
+import c7 from "./../assets/c7.png";
+import c8 from "./../assets/c8.png";
+import c10 from "./../assets/c10.png";
+import c9 from "./../assets/c9.png";
+import c11 from "./../assets/c11.png";
 
 const title1 = "BESONDERE WERBUNG";
 const title2 = "FÜR BESONDERE UNTERNEHMEN";
@@ -15,6 +27,7 @@ const prg1 = `team:orange macht keine Massenwerbung, Das können andere besser.
               Denn`;
 const prg2 = "das können wir besser";
 const prg3 = "als andere.";
+
 const Customers = () => {
   const refCust = useRef(null);
   const [isInView, setIsInView] = useState(false);
@@ -36,7 +49,7 @@ const Customers = () => {
         scale: 1,
         borderRadius: "0%",
         x: 0,
-        duration: 6,
+        duration: 3,
         scrollTrigger: {
           trigger: ".kunden-img",
           scrub: true,
@@ -100,19 +113,76 @@ const Customers = () => {
       id="kunden"
       className="w-full min-h-screen pb-[2rem] overflow-hidden"
     >
-      <div className="w-[6060px] h-[150px] bg-designColor flex items-center flex-nowrap overflow-hidden">
-        {customers.map((cst) => (
-          <div
-            key={cst.id}
-            className="w-[300px] h-[50px] flex items-center justify-center"
-          >
-            <img
-              src={cst.img}
-              alt=""
-              className="w-[200px] h-[50px] object-contain"
-            />
+      <div className="slider h-[150px] bg-designColor overflow-hidden relative">
+        <div className="slider-track">
+          <div className="slide-img w-[280px] h-[50px] flex items-center justify-center">
+            <img src={c1} alt="" className="w-full h-[50px] object-contain" />
           </div>
-        ))}
+          <div className="slide-img w-[280px] h-[50px] flex items-center justify-center">
+            <img src={c2} alt="" className="w-full h-[50px] object-contain" />
+          </div>
+          <div className="slide-img w-[280px] h-[50px] flex items-center justify-center">
+            <img src={c3} alt="" className="w-full h-[50px] object-contain" />
+          </div>
+          <div className="slide-img w-[280px] h-[50px] flex items-center justify-center">
+            <img src={c4} alt="" className="w-full h-[50px] object-contain" />
+          </div>
+          <div className="slide-img w-[280px] h-[50px] flex items-center justify-center">
+            <img src={c5} alt="" className="w-full h-[50px] object-contain" />
+          </div>
+          <div className="slide-img w-[280px] h-[50px] flex items-center justify-center">
+            <img src={c6} alt="" className="w-full h-[50px] object-contain" />
+          </div>
+          <div className="slide-img w-[280px] h-[50px] flex items-center justify-center">
+            <img src={c7} alt="" className="w-full h-[50px] object-contain" />
+          </div>
+          <div className="slide-img w-[280px] h-[50px] flex items-center justify-center">
+            <img src={c8} alt="" className="w-full h-[50px] object-contain" />
+          </div>
+          <div className="slide-img w-[280px] h-[50px] flex items-center justify-center">
+            <img src={c9} alt="" className="w-full h-[50px] object-contain" />
+          </div>
+          <div className="slide-img w-[280px] h-[50px] flex items-center justify-center">
+            <img src={c10} alt="" className="w-full h-[50px] object-contain" />
+          </div>
+          <div className="slide-img w-[280px] h-[50px] flex items-center justify-center">
+            <img src={c11} alt="" className="w-full h-[50px] object-contain" />
+          </div>
+          {/* doubled */}
+          <div className="slide-img w-[280px] h-[50px] flex items-center justify-center">
+            <img src={c1} alt="" className="w-full h-[50px] object-contain" />
+          </div>
+          <div className="slide-img w-[280px] h-[50px] flex items-center justify-center">
+            <img src={c2} alt="" className="w-full h-[50px] object-contain" />
+          </div>
+          <div className="slide-img w-[280px] h-[50px] flex items-center justify-center">
+            <img src={c3} alt="" className="w-full h-[50px] object-contain" />
+          </div>
+          <div className="slide-img w-[280px] h-[50px] flex items-center justify-center">
+            <img src={c4} alt="" className="w-full h-[50px] object-contain" />
+          </div>
+          <div className="slide-img w-[280px] h-[50px] flex items-center justify-center">
+            <img src={c5} alt="" className="w-full h-[50px] object-contain" />
+          </div>
+          <div className="slide-img w-[280px] h-[50px] flex items-center justify-center">
+            <img src={c6} alt="" className="w-full h-[50px] object-contain" />
+          </div>
+          <div className="slide-img w-[280px] h-[50px] flex items-center justify-center">
+            <img src={c7} alt="" className="w-full h-[50px] object-contain" />
+          </div>
+          <div className="slide-img w-[280px] h-[50px] flex items-center justify-center">
+            <img src={c8} alt="" className="w-full h-[50px] object-contain" />
+          </div>
+          <div className="slide-img w-[280px] h-[50px] flex items-center justify-center">
+            <img src={c9} alt="" className="w-full h-[50px] object-contain" />
+          </div>
+          <div className="slide-img w-[280px] h-[50px] flex items-center justify-center">
+            <img src={c10} alt="" className="w-full h-[50px] object-contain" />
+          </div>
+          <div className="slide-img w-[280px] h-[50px] flex items-center justify-center">
+            <img src={c11} alt="" className="w-full h-[50px] object-contain" />
+          </div>
+        </div>
       </div>
       <motion.div
         className="w-full h-[500px] flex items-center justify-center"
