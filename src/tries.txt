@@ -13,3 +13,54 @@ style={{
               className="w-full h-full object-cover"
             />
           </div>
+#References
+const positions = [
+  { top: "0", left: "0" },
+  { top: "-230px", left: "396px" },
+  { top: "-470px", left: "790px" },
+  { top: "-435px", left: "0" },
+  { top: "-670px", left: "396px" },
+  { top: "-905px", left: "790px" },
+  { top: "-870px", left: "0" },
+  { top: "-1100px", left: "396px" },
+  { top: "-1335px", left: "790px" },
+  { top: "-1305px", left: "0" },
+  { top: "-1535px", left: "396px" },
+  { top: "-1770px", left: "790px" },
+];
+gsap.set(".anim-img", {
+    top: "45%",
+    left: "50%",
+    transform: "translate(-50%, -50%) scale(0)",
+  });
+  gsap.to(".anim-img", {
+    scale: 1,
+    width: "360px",
+    height: "235px",
+    stagger: 0.07,
+    duration: 1.2,
+    ease: "power2.out",
+    delay: 0.7,
+    onComplete: handleShrink,
+  });
+  function handleShrink() {
+    setTimeout(() => {
+      setIsCompleted(true);
+    }, 2500);
+  }
+
+  #############
+   <div
+          className={`w-[1170px] mx-auto relative img-anim-case`}
+          ref={refBox}
+        >
+          {references.map((ref, i) => (
+            <SingleReference
+              key={ref.id}
+              img={ref.img}
+              i={i}
+              isNowInView={isNowInView}
+              isCompleted={true}
+            />
+          ))}
+        </div>

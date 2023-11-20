@@ -1,21 +1,42 @@
-import React, { useLayoutEffect } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { customers } from "../utils/helpers";
-import Tlikes from "./../assets/2kikes.jpg";
+//import Tlikes from "./../assets/2kikes.jpg";
 import indutrie from "./../assets/industrie-dienstleistung-handel.jpg";
+import par from "./../assets/prlx.png";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { motion, useScroll, useTransform } from "framer-motion";
 
+const title1 = "BESONDERE WERBUNG";
+const title2 = "FÜR BESONDERE UNTERNEHMEN";
+const prg1 = `team:orange macht keine Massenwerbung, Das können andere besser.
+              Wir machen lieber Kommunikation für heterogene Zielgruppen und
+              Unternehmen, die komplexe Produkte und Dienstleistungen anbieten.
+              Denn`;
+const prg2 = "das können wir besser";
+const prg3 = "als andere.";
 const Customers = () => {
+  const refCust = useRef(null);
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      setIsInView(entries[0].isIntersecting);
+    });
+    observer.observe(refCust.current);
+  }, []);
+  console.log(isInView);
   gsap.registerPlugin(ScrollTrigger);
 
   useLayoutEffect(() => {
     gsap.fromTo(
       ".kunden-img",
-      { opacity: 0.1, scale: 0.5 },
+      { scale: 0.1, x: -600, background: "#ff692d" },
       {
-        opacity: 1,
         scale: 1,
-        duration: 4,
+        borderRadius: "0%",
+        x: 0,
+        duration: 6,
         scrollTrigger: {
           trigger: ".kunden-img",
           scrub: true,
@@ -23,6 +44,57 @@ const Customers = () => {
       }
     );
   }, []);
+
+  /* Parallax animation */
+  const { scrollYProgress } = useScroll({
+    target: refCust,
+    offset: ["start start", "end start"],
+  });
+  const yBg = useTransform(scrollYProgress, [0, 1], ["0%", "70%"]);
+
+  /* Text animation */
+  const titleContainer = {
+    hidden: { opacity: 0 },
+    visible: (i = 1) => ({
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.12,
+        delayChildren: 0.04 * i,
+      },
+    }),
+  };
+  const titleChild = {
+    visible: (i = 1) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        damping: 12,
+        stiffness: 100,
+      },
+    }),
+    hidden: {
+      opacity: 0,
+      y: 20,
+      transition: {
+        type: "spring",
+        damping: 12,
+        stiffness: 100,
+      },
+    },
+  };
+  const parContainer = {
+    hidden: { opacity: 0 },
+    visible: (i = 1) => ({
+      opacity: 1,
+      delay: 6,
+      transition: {
+        staggerChildren: 0.12,
+        delayChildren: 0.04 * i,
+      },
+    }),
+  };
+
   return (
     <section
       id="kunden"
@@ -42,42 +114,72 @@ const Customers = () => {
           </div>
         ))}
       </div>
-      <div
-        className="w-full h-[400px] flex items-center justify-center"
+      <motion.div
+        className="w-full h-[500px] flex items-center justify-center"
         style={{
-          backgroundImage: `url(${Tlikes})`,
+          backgroundImage: `url(${par})`,
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundBlendMode: "lighten",
         }}
+        ref={refCust}
       >
-        <div className="w-[70%] h-[70%] ">
+        <motion.div className="w-[70%] h-[70%] " style={{ y: yBg }}>
           <div className="flex flex-col items-center justify-center ">
-            <div className="w-[30%] pb-2 mb-2 text-center text-white text-[16px] font-normal tracking-tight border-b-[1px] border-b-[#fff]">
+            <div className="w-[30%] font-[500] pb-2 mb-2 text-center text-[#333] text-[16px] tracking-tight border-b-[1px] border-b-[#333]">
               SPECIALIZAT:ON
             </div>
-            <div
-              className="w-[45%] text-center text-white text-[39px] font-bold tracking-tight 
+            <motion.div
+              variants={titleContainer}
+              // initial="hidden"
+              // animate="visible"
+              animate={isInView ? "visible" : "hidden"}
+              className="w-[45%] text-center text-[#333] text-[39px] font-bold tracking-tight 
             leading-[40px] mt-2"
             >
-              BESONDERE WERBUNG <br /> FÜR BESONDERE UNTERNEHMEN
-            </div>
+              {title1.split("").map((word, i) => (
+                <motion.span variants={titleChild} key={i}>
+                  {word}
+                </motion.span>
+              ))}{" "}
+              <br />{" "}
+              {title2.split("").map((word, i) => (
+                <motion.span variants={titleChild} key={i}>
+                  {word}
+                </motion.span>
+              ))}
+            </motion.div>
           </div>
           <div className="w-[60%] mx-auto mt-[1.5rem]">
-            <p className="text-white text-center text-[20px] leading-[26px]">
-              team:orange macht keine Massenwerbung, Das können andere besser.
-              Wir machen lieber Kommunikation für heterogene Zielgruppen und
-              Unternehmen, die komplexe Produkte und Dienstleistungen anbieten.
-              Denn{" "}
-              <span className="bg-designColor p-[2px]">
-                das können wir besser
-              </span>{" "}
-              als andere.
-            </p>
+            <motion.p
+              className="text-[#333] text-center text-[20px] leading-[26px]"
+              variants={parContainer}
+              animate={isInView ? "visible" : "hidden"}
+            >
+              {prg1.split("").map((word, i) => (
+                <motion.span variants={titleChild} key={i}>
+                  {word}
+                </motion.span>
+              ))}{" "}
+              {prg2.split("").map((word, i) => (
+                <motion.span
+                  variants={titleChild}
+                  className="bg-designColor p-[1px] tracking-tighter"
+                  key={i}
+                >
+                  {word}
+                </motion.span>
+              ))}{" "}
+              {prg3.split("").map((word, i) => (
+                <motion.span variants={titleChild} key={i}>
+                  {word}
+                </motion.span>
+              ))}
+            </motion.p>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
       <div className="w-[1170px] mx-auto h-auto">
         <div className="w-full h-[300px]  flex items-center justify-center">
           <div className=" ">

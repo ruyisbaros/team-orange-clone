@@ -1,68 +1,24 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
-import Tlikes from "./../assets/2kikes.jpg";
-import { references } from "../utils/helpers";
-import SingleReference from "./SingleReference";
+import React, { useRef, useState } from "react";
+//import Tlikes from "./../assets/2kikes.jpg";
+import par from "./../assets/prlx.png";
 import CounterUp from "react-countup";
 import Trigger from "react-scroll-trigger";
-import { motion, stagger } from "framer-motion";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-const positions = [
-  { top: "0", left: "0" },
-  { top: "-230px", left: "396px" },
-  { top: "-470px", left: "790px" },
-  { top: "-435px", left: "0" },
-  { top: "-670px", left: "396px" },
-  { top: "-905px", left: "790px" },
-  { top: "-870px", left: "0" },
-  { top: "-1100px", left: "396px" },
-  { top: "-1335px", left: "790px" },
-  { top: "-1305px", left: "0" },
-  { top: "-1535px", left: "396px" },
-  { top: "-1770px", left: "790px" },
-];
+import Modal from "./Modal";
+import CustomerList from "./CustomerList";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const Reference = () => {
-  const refBox = useRef(null);
-  gsap.registerPlugin(ScrollTrigger);
+  const ref = useRef(null);
   const [startCounter, setStartCounter] = useState(false);
-  const [isCompleted, setIsCompleted] = useState(false);
-  const [isNowInView, setIsNowInView] = useState();
+  const [selected, setSelected] = useState(null);
 
-  let entry;
-  useEffect(() => {
-    const observer = new IntersectionObserver((ents) => {
-      entry = ents[0];
-      console.log(entry);
-      setIsNowInView(entry.isIntersecting);
-      setIsCompleted(false);
-    });
-    observer.observe(refBox.current);
-  }, [entry]);
-  console.log(isNowInView);
-  const imgs = document.querySelectorAll(".anim-img");
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
 
-  gsap.set(".anim-img", {
-    top: "45%",
-    left: "50%",
-    transform: "translate(-50%, -50%) scale(0)",
-  });
-  gsap.to(".anim-img", {
-    scale: 1,
-    width: "360px",
-    height: "235px",
-    stagger: 0.2,
-    duration: 0.85,
-    ease: "power2.out",
-    delay: 1,
-    onComplete: handleShrink,
-  });
-  function handleShrink() {
-    setTimeout(() => {
-      setIsCompleted(true);
-    }, 2500);
-  }
+  const yBg = useTransform(scrollYProgress, [0, 1], ["0%", "220%"]);
+  const yBg2 = useTransform(scrollYProgress, [0, 1], [0, -600]);
 
   return (
     <Trigger
@@ -70,32 +26,36 @@ const Reference = () => {
       onExit={() => setStartCounter(false)}
     >
       <section id="referenzen" className="w-full min-h-screen overflow-hidden">
-        <div
+        <motion.div
           className={`w-full h-[600px] transition-all duration-300 flex items-center justify-center`}
           style={{
-            backgroundImage: `url(${Tlikes})`,
+            backgroundImage: `url(${par})`,
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundBlendMode: "lighten",
           }}
+          ref={ref}
         >
-          <div className="w-[70%] h-[70%] ">
-            <div className="flex flex-col items-center justify-center opacity-[.8]">
-              <div className="w-[30%] pb-2 mb-2 text-center text-white text-[16px] font-normal tracking-tight border-b-[1px] border-b-[#fff]">
+          <motion.div className="w-[70%] h-[70%] ">
+            <motion.div
+              className="flex flex-col items-center justify-center opacity-[.8]"
+              style={{ y: yBg }}
+            >
+              <div className="w-[30%] pb-2 mb-2 text-center text-[#333] text-[16px] font-[500] tracking-tight border-b-[1px] border-b-[#333]">
                 PRESENTAT:ON
               </div>
               <div
-                className="w-[45%] text-center text-white text-[39px] font-bold tracking-tight 
+                className="w-[45%] text-center text-[#333] text-[39px] font-bold tracking-tight 
             leading-[40px] mt-2"
               >
                 ERKLÄRUNGSBEDÜRFTIGE <br /> PRODUKTE UND DIENSTLEISTUNGEN <br />{" "}
                 SEIT 1999
               </div>
-            </div>
-            <div className="text-white w-full h-[70%] flex justify-center mt-[1rem]">
-              <div className="text-white w-full flex items-center justify-center gap-[3rem]">
-                <div className="w-[260px] h-[174px] parBox">
+            </motion.div>
+            <motion.div className="text-white w-full h-[70%] flex justify-center mt-[1rem]">
+              <motion.div className="text-white w-full flex items-center justify-center gap-[3rem]">
+                <motion.div className="w-[260px] h-[174px] parBox">
                   <div className="w-full h-full flex flex-col justify-center items-center gap-[1.5rem]">
                     <div className="">
                       <span
@@ -115,7 +75,7 @@ const Reference = () => {
                     </div>
                     <p className="font-bold text-[20px]">Industrie</p>
                   </div>
-                </div>
+                </motion.div>
                 <div className="w-[260px] h-[174px] parBox">
                   <div className="w-full h-full flex flex-col justify-center items-center gap-[1.5rem]">
                     <div>
@@ -172,25 +132,14 @@ const Reference = () => {
                     <p className="font-bold text-[20px]">Erdbeerjoghurt</p>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className={`w-[1170px] mx-auto relative ${
-            isCompleted ? "img-anim-case" : ""
-          }`}
-          ref={refBox}
-        >
-          {references.map((ref, i) => (
-            <SingleReference
-              key={ref.id}
-              img={ref.img}
-              i={i}
-              isNowInView={isNowInView}
-              isCompleted={isCompleted}
-            />
-          ))}
+              </motion.div>
+            </motion.div>
+          </motion.div>
+        </motion.div>
+        {/* List */}
+        <div className="w-[1170px] mx-auto relative">
+          <CustomerList setSelected={setSelected} />
+          {selected && <Modal selected={selected} setSelected={setSelected} />}
         </div>
         <div className="w-full mt-[4rem] mb-[3rem] flex justify-center items-center">
           <p className="font-bold text-designColor text-[20px] cursor-pointer">
